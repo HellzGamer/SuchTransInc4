@@ -1,0 +1,75 @@
+﻿@model Inc2SuchTrans.Models.Quote
+@{
+
+}
+
+
+<div class="FilterDiv">
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.QuoteID)
+
+        <div class="form-horizontal">
+            <h4>Enter Details Below To Get A Quotation</h4>
+            <hr />
+
+            <table class="QuoteTable">
+                <thead style="color:white;"></thead>
+                <tbody>
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            @Html.LabelFor(model => model.PickUpArea, new { style = "display:inline;" })
+                        </td>
+                        <td class="QuoteTableTD">
+                            @Html.DropDownList("PickUpArea", "Select a Pick Up Area")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            @Html.LabelFor(model => model.DropOffArea, new { style = "display:inline;" })
+                        </td>
+                        <td class="QuoteTableTD">
+                            @Html.DropDownList("DropOffArea", "Select a Drop Off Area")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            @Html.LabelFor(model => model.CargoSize, new { style = "display:inline;" })
+                        </td>
+                        <td class="QuoteTableTD">
+                            @Html.DropDownListFor(model => model.CargoSize, new SelectList(new List<Object> {
+                                                                                new {value=6, text="6m"},
+                                                                                new {value=12, text="12m"}
+                                                                                },
+                                                      "value", "text"));
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            @Html.LabelFor(model => model.CargoWeight, htmlAttributes: new { style = "display:inline;" })
+                        </td>
+                        <td class="QuoteTableTD">
+                            @Html.TextBoxFor(model => model.CargoWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Calculate Quote" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Cancel", "Create","Quote")
+    </div>
+</div>
+

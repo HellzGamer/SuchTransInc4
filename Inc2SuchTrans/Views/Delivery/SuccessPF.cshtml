@@ -1,0 +1,77 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+
+@{ 
+
+}
+
+
+<div class="FilterDiv">
+    @{ Html.RenderPartial("_Alerts"); }
+    <h4>Delivery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropOffArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropOffArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropOffAdd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropOffAdd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back To Your Deliveries", "YourDeliveries")
+</p>

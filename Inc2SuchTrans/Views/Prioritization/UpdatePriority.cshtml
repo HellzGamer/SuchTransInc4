@@ -1,0 +1,67 @@
+﻿@model Inc2SuchTrans.Models.Deliveryjob
+
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 class="EveryHeader">Update Priority Status</h1>
+<div class="FilterDivAdmin">
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.JobID)
+            @Html.HiddenFor(model => model.DelID)
+            @Html.HiddenFor(model => model.TruckID)
+            @Html.HiddenFor(model => model.DriverID)
+
+            <table class="BookingTable">
+                <tr>
+                    <td>@Html.LabelFor(model => model.DelID, "DelID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.DelID, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.TruckID, "TruckID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.TruckID, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DriverID, "DriverID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.TextBoxFor(model => model.DriverID, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.JobStatus, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>
+                        @Html.DropDownListFor(model => model.JobStatus, new SelectList(new List<Object> {
+                                                                                new {value="Delivered", text="Delivered"},
+                                                                                new {value="En-route", text="En-route"},
+                                                                                new {value="Priority", text="Priority"},
+                                                                                new {value="Waiting", text="Waiting"}
+                                                                                },
+                                                      "value", "text"))
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.PortDelay, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td>@Html.EditorFor(model => model.PortDelay)</td>
+            </tr>
+        </table>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="OrangeButton" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div style="color:white">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

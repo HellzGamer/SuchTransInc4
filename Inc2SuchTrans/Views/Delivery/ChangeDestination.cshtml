@@ -1,0 +1,162 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+
+@{
+
+}
+
+@section scripts
+    {
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBJQzzVZnULIx3lYEgaAJGENnMMpBoNDys">
+    </script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('DropOffAdd'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                alert(mesg);
+            });
+        });
+    </script>
+}
+
+            <h4 style="text-decoration:underline; font-size:300%; text-align:center;">Change Destination</h4>
+<div class="FilterDiv">
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DelID)
+            @Html.HiddenFor(model => model.CustomerID)
+            @Html.HiddenFor(model => model.CurrentDate)
+            @Html.HiddenFor(model => model.DeliveryDate)
+            @Html.HiddenFor(model => model.PickUpArea)
+            @Html.HiddenFor(model => model.CargoSize)
+            @Html.HiddenFor(model => model.CargoWeight)
+            @Html.HiddenFor(model => model.TotalCost)
+            @Html.HiddenFor(model => model.Paid)
+            @Html.HiddenFor(model => model.DeliveryRef)
+            @Html.HiddenFor(model => model.DeliveryStatus)
+
+            <table>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CustomerID, "CustomerID", htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.CustomerID, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CurrentDate, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.CurrentDate, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.DeliveryDate, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.DeliveryDate, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.PickUpArea, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.PickUpArea, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.DropOffArea, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.DropDownList("DropOffArea", "Select a Drop Off Area")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.DropOffAdd, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    <input type="text" id="DropOffAdd" name="DropOffAdd" style="width: 250px" placeholder="Please enter drop off address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CargoSize, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.CargoSize, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CargoWeight, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.CargoWeight, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.TotalCost, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.TotalCost, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.Paid, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Paid, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.DeliveryRef, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.DeliveryRef, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.DeliveryStatus, htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.DeliveryStatus, new { disabled = "disabled" })
+                    </td>
+                </tr>               
+            </table>  
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="OrangeButton" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "YourDeliveries")
+    </div>
+
+</div>
+
+
+

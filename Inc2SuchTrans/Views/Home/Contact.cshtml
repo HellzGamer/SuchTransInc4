@@ -1,0 +1,94 @@
+﻿@using Inc2SuchTrans.Models;
+@using Jmelosegui.Mvc.GoogleMap
+@{
+    ViewBag.Title = "Contact";
+    STLogisticsEntities db = new STLogisticsEntities();
+}
+<style>
+    .DisplayImg {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        float: right;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Such Trans Logistics</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+
+    <script type='text/javascript'>
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;) r('track' + i.pop()); return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
+        }({
+            instrumentationKey: 'cf194f57-8cef-48e1-ba4b-383d17a2ca36'
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <h2 style="font-size: 350%; text-align:center;">@ViewBag.Title</h2>
+    <div style="width:auto;border-radius:10px; height:auto; background:rgba(0, 0, 139, 0.3); padding:15px">
+
+        <h3>Give us a call</h3>
+        <hr />
+        <div class="ContactTableCell">
+            <address style="background-color: rgba(255,140,0,0.7); width:auto; margin-left: auto; margin-right: auto; border-radius:10px;">
+                <ul>
+                    @foreach (var c in db.Contact.ToList())
+                    {
+
+                        <li>@c.CompanyAddress</li>
+                                <li>Tel: @c.Tel</li>
+                                <li>Fax: @c.Fax</li>
+                                <li>Cell: @c.Cell</li>
+                                <li>Email :@c.Email</li>
+                    }
+                </ul>
+            </address>
+            <div>
+
+                @(Html.GoogleMap()
+                                .Name("map")
+                                .Height(500)
+                                .Width(700)
+                                .Zoom(15)
+                                .Center(c => c.Address("Silverglen drive, SilverGlen"))
+                                .Markers(m => m.Add().Title("SUCH Trans Logistic"))
+                                .ApiKey("AIzaSyCbKVj69xcO0xR9IUKywKoLmwbWgDQzh-Q")
+
+                )
+
+            </div>
+            <div style="background-color: rgba(255,140,0,0.7); width:auto; margin-left: auto; margin-right: auto; border-radius:10px; padding-left:50px">
+                <h3>We are now on Social Media</h3>
+
+                <a style="color:black;" href="www.facebook.com"><p>Find us on Facebook:<img height="75" src="~/Content/Images/Facebook.svg" alt="Twitter" /></p></a>
+                <a style="color:black;" href="www.twitter.com"><p>Follow us on Twitter: <img height="75" src="~/Content/Images/Twitter.svg" alt="Facebook" /></p></a>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+
+@section scripts
+{
+    @(Html.GoogleMap().ScriptRegistrar())
+}
+
+

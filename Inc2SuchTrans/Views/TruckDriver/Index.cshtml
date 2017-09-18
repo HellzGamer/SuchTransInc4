@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.TruckDriver>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+            <h1 class="EveryHeader">Search For A Truck Driver</h1>
+    <div class="container FilterDivAdmin">
+    @using (Html.BeginForm("Index", "Fleet", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="DriverID" name="DriverID" maxlength="64" placeholder="Enter Driver ID" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+    }
+
+    <br />
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <table class="table-bordered table-condensed BookingTable">
+        <tr style="background-color:black">
+            <th>
+                @Html.DisplayNameFor(model => model.DriverID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.EmployeeSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriorityStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.UserID)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriverID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.EmployeeSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.UserID)
+                </td>
+                <td>
+                    <div class="OrangeButton">
+                        @Html.ActionLink("Change Availability", "updateStatus", new { id = item.DriverID }, new { @class = "OrangeButtonLink" })
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

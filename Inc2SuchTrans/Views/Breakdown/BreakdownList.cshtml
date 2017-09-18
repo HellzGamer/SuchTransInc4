@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Breakdowns>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Add A Breakdown", "Details", "Breakdown")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TruckNumberPlate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakdownDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakdownLocation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckNumberPlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BreakdownDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BreakdownLocation)
+            </td>
+
+        </tr>
+    }
+
+</table>

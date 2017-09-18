@@ -1,0 +1,94 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+            <h1 class="EveryHeader">Pick-up or Drop-off</h1>
+<div class="FilterDivAdmin">
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <hr />
+            @Html.HiddenFor(model => model.DelID)
+            @Html.HiddenFor(model => model.CustomerID)
+            @Html.HiddenFor(model => model.CurrentDate)
+            @Html.HiddenFor(model => model.DeliveryDate)
+            @Html.HiddenFor(model => model.PickUpArea)
+            @Html.HiddenFor(model => model.DropOffArea)
+            @Html.HiddenFor(model => model.DropOffAdd)
+            @Html.HiddenFor(model => model.CargoSize)
+            @Html.HiddenFor(model => model.CargoWeight)
+            @Html.HiddenFor(model => model.TotalCost)
+            @Html.HiddenFor(model => model.Paid)
+            @Html.HiddenFor(model => model.DeliveryRef)
+
+
+            <table class="BookingTable">
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CustomerID, "CustomerID", htmlAttributes: new { @class = "control-label col-md-2 Column1" })
+                    </td>
+                    <td>
+                    @Html.TextBoxFor(model => model.CustomerID, new { disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CurrentDate, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.CurrentDate, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DeliveryDate, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.DeliveryDate, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.PickUpArea, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.PickUpArea, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DropOffArea, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.DropOffArea, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DropOffAdd, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.DropOffAdd, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CargoSize, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.CargoSize, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CargoWeight, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.CargoWeight, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.TotalCost, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.TotalCost, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Paid, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.Paid, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DeliveryRef, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.TextBoxFor(model => model.DeliveryRef, new { disabled = "disabled" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DeliveryStatus, htmlAttributes: new { @class = "control-label col-md-2 Column1" })</td>
+                    <td>@Html.DropDownListFor(model => model.DeliveryStatus, new SelectList(new List<Object> {
+                                                                                new {value="En-route", text="Picked Up"},
+                                                                                new {value="Delivered", text="Dropped Off"}
+                                                                                },
+                                           "value", "text"))</td>
+                </tr>
+               
+
+            </table>
+                    <input type="submit" value="Save" class="OrangeButton" />
+            
+    <div>
+        @Html.ActionLink("Back to Details", "DeliveryDetails", new { refkey = Model.DeliveryRef })
+    </div>
+
+</div>
+    }

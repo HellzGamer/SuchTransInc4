@@ -1,0 +1,60 @@
+﻿@{
+
+}
+
+<br />
+<br />
+<br />
+
+<h3>Delivery ID: @Html.Label((string)@ViewBag.DelID)</h3>
+<h3>Pick Up Area: @Html.Label((string)@ViewBag.PickUp)</h3>
+<h3>Drop Off Address @Html.Label((string)@ViewBag.DropOff)</h3>
+<h3>Customer Name: @Html.Label((string)@ViewBag.CustName)</h3>
+<h3>Customer Surname: @Html.Label((string)@ViewBag.CustSurname)</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div>
+
+                <input type="button" value="stop tracking" onclick="stop()" />
+
+                <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+            </div>
+            <br />
+
+
+        </div>
+
+        <div id="map" style="min-height:500px"></div>
+
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+@section scripts{
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA7XN1EPnExZ22cvrXKZdGTu9EbqGS27aI"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>*@
+    <script src="~/Scripts/index.js"></script>
+}
+<script>
+
+    function stop() {
+        if (watchID) {
+            navigator.geolocation.clearWatch(watchID);
+            watchID = null;
+            return false;
+
+        }
+
+    }
+
+</script>

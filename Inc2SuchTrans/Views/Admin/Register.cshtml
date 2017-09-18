@@ -1,0 +1,48 @@
+﻿@model Inc2SuchTrans.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+        <h1 class="EveryHeader">Create a new account</h1>
+<div class="FilterDivAdmin">
+
+
+    @using (Html.BeginForm("Register", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <table class="BookingTable">
+            <tr>
+                <td>@Html.LabelFor(m => m.Email, new { @class = "Column1" })</td>
+                <td>@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password, new { @class = "Column1" })</td>
+                <td>@Html.PasswordFor(m => m.Password, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ConfirmPassword, new { @class = "Column1" })</td>
+                <td>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Select Your User Type", new { @class = "Column1" })</td>
+                <td>@Html.DropDownList("Role", "Select Position")</td>
+            </tr>
+            <tr>
+                <td><input type="submit" class="OrangeButton" value="Register" /></td>
+                <td></td>
+            </tr>
+        </table>
+
+    <!--Select the Role Type for the User-->
+        
+                 
+                         
+       
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

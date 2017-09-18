@@ -1,0 +1,150 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+@{
+
+}
+
+
+
+<br />
+
+                    <h4 style="font-size:300%; text-decoration:underline;text-align:center;">Search For A Delivery</h4>
+<div class="FilterDiv">
+    <div>
+        @using (Html.BeginForm("DeliveryStatus", "Delivery", FormMethod.Get))
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="search">
+                        @*<input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key"/>*@
+                        <input type="text" class="form-control input-sm" id="refkey" name="refkey" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="container">
+                    <div class="row">
+                        <h4>Search For A Delivery</h4>
+                        <div class="search">
+                            <input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                        </div>
+                    </div>
+                </div>*@
+        }
+        <h4>Delivery Details</h4>
+        @{ Html.RenderPartial("_Alerts"); }
+
+        <hr />
+
+        <table class="table-condensed table-bordered DeliveryTable">
+            <tbody>
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CurrentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CurrentDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.PickUpArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PickUpArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DropOffArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DropOffAdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffAdd)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CargoSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoSize)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CargoWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoWeight)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.TotalCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TotalCost)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.Paid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Paid)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryRef)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryRef)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryStatus)
+                    </td>
+                    <td class="alert-info">
+                        @Html.DisplayFor(model => model.DeliveryStatus)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Back To Deliveries", "YourDeliveries") |
+        @Html.ActionLink("Track Delivery", "TrackDelivery", new { id = Model.DelID }) |
+        @Html.ActionLink("Cancel Delivery", "CancelDelivery", new { id = Model.DelID }) | <br/>
+        @Html.ActionLink("Change Destination", "ChangeDestination", new { id=Model.DelID})
+    </p>
+</div>
+

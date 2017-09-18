@@ -1,0 +1,31 @@
+﻿
+@{
+
+}
+
+
+                <h4 style="font-size:300%; text-decoration:underline;text-align:center;">Search For A Delivery</h4>
+<div class="FilterDiv">
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm("DeliveryStatus", "Delivery", FormMethod.Post))
+    {
+        
+            
+                
+                    @*<input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key"/>*@
+                    <p>Enter your Delivery Reference Key</p>
+                    <input type="text" class="form-control input-sm" id="refkey" name="refkey" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                    <button type="submit" style="margin-left:auto; margin-right: auto; background-color:lightblue; margin:2px;">Search</button>
+                
+
+        @*<div class="container">
+                <div class="row">
+                    <h4>Search For A Delivery</h4>
+                    <div class="search">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+                </div>
+            </div>*@
+    }
+</div>

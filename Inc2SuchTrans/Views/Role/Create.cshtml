@@ -1,0 +1,33 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+
+}
+
+<div class="FilterDiv">
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <h2>Create A Role For this System</h2>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <table id="tbrole">
+                <tr>
+                    <td class="c">Enter Role Name To be Created:</td>
+                    <td class="c">
+                        @Html.EditorFor(m => m.Name)
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Create Role" class="btn-primary" />
+        </div>
+        <br />
+        <div>
+            @Html.ActionLink("Back To List", "Index", "Role")
+        </div>
+
+    }
+
+</div>

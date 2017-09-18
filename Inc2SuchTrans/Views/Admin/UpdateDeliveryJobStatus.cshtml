@@ -1,0 +1,127 @@
+﻿@model Inc2SuchTrans.Models.Deliveryjob
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+                        <h1 class="EveryHeader">Delivery Job</h1>
+<br/>
+
+               
+    <table class="BookingTable">
+        <tr>
+            <td style="width:50%; vertical-align:middle; margin-top:0; border-radius:5px;grid-row-span:2">
+                @using (Html.BeginForm())
+                {
+                    <div class="FilterDivAdmin">
+                        <hr />
+                        @Html.HiddenFor(model => model.JobID)
+                        @Html.HiddenFor(model => model.DelID)
+                        @Html.HiddenFor(model => model.DriverID)
+                        @Html.HiddenFor(model => model.TruckID)
+                        @Html.HiddenFor(model => model.PortDelay)
+
+                        <table>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.DelID, "DelID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.TextBoxFor(model => model.DelID, new { disabled = "disabled" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.TruckID, "TruckID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.TextBoxFor(model => model.TruckID, new { disabled = "disabled" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.DriverID, "DriverID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.TextBoxFor(model => model.DriverID, new { disabled = "disabled" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.JobStatus, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.DropDownListFor(model => model.JobStatus, new SelectList(new List<Object> {
+                                                                                new {value="Delivered", text="Delivered"},
+                                                                                new {value="En-route", text="En-route"},
+                                                                                //new {value="Priority", text="Priority"},
+                                                                                new {value="Waiting", text="Waiting"}
+                                                                                },
+                                           "value", "text"))</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.PortDelay, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                                <td>@Html.EditorFor(model => model.PortDelay)</td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Save" class="OrangeButtonLink" /></td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        
+                
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+                        </div>
+                }
+            </td>
+            <td style="width: 50%; vertical-align: middle; margin-top: 0; border-radius: 25px; border-style: groove;">
+
+                @*<table style="border-radius: 25px;width: 50%">
+                        <tr>
+                            <img width="100%" style="border-top-left-radius: 25px; border-top-right-radius: 25px;" src="~/Content/Images/Phone.jpg" />
+                        </tr>
+                        <tr>
+                            <img width="100%" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;" src="~/Content/Images/Phone2.jpg" />
+                        </tr>
+                    </table>*@
+                @*Google maps code goes here*@
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <div>
+
+                                @*<input type="button" value="stop tracking" onclick="stop()" />*@
+
+                                <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+                                <meta name="apple-mobile-web-app-capable" content="yes">
+                                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+                            </div>
+                            <br />
+
+
+                        </div>
+
+                        <div id="map" style="min-height:500px"></div>
+
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+@section scripts{
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA7XN1EPnExZ22cvrXKZdGTu9EbqGS27aI"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>*@
+    <script src="~/Scripts/index.js"></script>
+}
+<script>
+
+    function stop() {
+        if (watchID) {
+            navigator.geolocation.clearWatch(watchID);
+            watchID = null;
+            return false;
+
+        }
+
+    }
+
+</script>
+
+
+
+

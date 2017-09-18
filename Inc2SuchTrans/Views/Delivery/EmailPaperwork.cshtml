@@ -1,0 +1,39 @@
+﻿
+@model Inc2SuchTrans.Models.MailModel
+@{
+
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="FilterDiv" style="color:black">
+            <h4 style="color:white">Send Email:</h4>
+            <table class="QuoteTable">
+                <thead style="color:white;"></thead>
+                <tbody>
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            @Html.LabelFor(model => model.To, new { style = "display:inline;" })
+                        </td>
+                        <td class="QuoteTableTD">
+                            <p>@Html.TextBoxFor(m => m.To)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("Cancel", "YourDeliveries", "Delivery")
+            </div>
+        </div>
+    </div>
+}
+@{ Html.RenderPartial("_Alerts"); }
+
+

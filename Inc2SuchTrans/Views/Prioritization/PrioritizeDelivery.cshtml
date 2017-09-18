@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Deliveryjob>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 style="text-decoration:underline; text-align:center;">Prioritize Delivery</h1>
+<div class="FilterDivAdmin">
+    <div class="OrangeButton">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "OrangeButtonLink" })
+    </div>
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <table class="table DeliveryTable">
+        <tr style="background-color:black; color:white;">
+            <th>
+                @Html.DisplayNameFor(model => model.JobStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delivery.PickUpArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delivery.DropOffAdd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckDriver.DriverID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fleet.TruckNumberPlate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Delivery.PickUpArea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Delivery.DropOffAdd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TruckDriver.DriverID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fleet.TruckNumberPlate)
+                </td>
+                <td>
+                    @Html.ActionLink("Change Priority Status", "UpdatePriority", new { id = item.JobID }) |
+                    @*@Html.ActionLink("Details", "Details","Admin", new { id = item.JobID }) |*@
+                    @Html.ActionLink("Details", "Details", "Delivery", new { id = item.JobID }, null)
+                    @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

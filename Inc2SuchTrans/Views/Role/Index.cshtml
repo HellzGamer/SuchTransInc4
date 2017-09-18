@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{ 
+
+}
+
+<div class="FilterDiv">
+
+    <h2>Available Roles For Application</h2>
+
+<div>
+    <table>
+        <tr>
+            <td class="alert-info">
+                @Html.ActionLink("Create Role", "Create", "Role")
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br />    
+<div>
+    <table>
+        <tr>
+            <td class="alert-info">
+                @Html.ActionLink("Assign Role To Employee", "AssignRole", "Role")
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br />
+<div>
+    <table class="table table-bordered table-condensed" id="roleTable">
+        <tr>
+            <td class="alert-info">
+                Role Name
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="c">
+                    @item.Name
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+</div>

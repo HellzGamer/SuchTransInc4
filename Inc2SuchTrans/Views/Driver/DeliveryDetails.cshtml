@@ -1,0 +1,124 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+
+<h1 class="EveryHeader">Delivery Details</h1>
+<div class="FilterDivAdmin">
+    <div>
+        @{ Html.RenderPartial("_Alerts"); }
+
+
+        <table class="table-condensed table-bordered BookingTable">
+            <tbody>
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CurrentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CurrentDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.PickUpArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PickUpArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DropOffArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DropOffAdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffAdd)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CargoSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoSize)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CargoWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoWeight)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.TotalCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TotalCost)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.Paid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Paid)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryRef)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryRef)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DeliveryStatus)
+                    </td>
+                    <td class="alert-info">
+                        @Html.DisplayFor(model => model.DeliveryStatus)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="OrangeButton">
+        @Html.ActionLink("Notify of Pick Up/Drop Off", "Edit", new { id = Model.DelID }, new { @class = "OrangeButtonLink" }) @*<br />
+            @Html.ActionLink("Notify of Drop Off", "Edit")*@
+    </div>
+</div>
+

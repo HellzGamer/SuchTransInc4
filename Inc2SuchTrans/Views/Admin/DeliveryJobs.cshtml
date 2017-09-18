@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Deliveryjob>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+            <h1 class="EveryHeader">Search For A Delivery Job</h1>
+
+@using (Html.BeginForm("DeliveryJobs", "Admin", FormMethod.Post))
+{
+    <div class="container FilterDivAdmin">
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="JobID" name="JobID" maxlength="64" placeholder="Enter Delivery ID" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+<br />
+
+@{ Html.RenderPartial("_Alerts"); }
+
+<table class="table-bordered table-condensed DeliveryTable">
+    <tr style="background-color:black; color:white;">
+        <th>
+            @Html.DisplayNameFor(model => model.JobID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobStatus)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.PortDelay)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery.PickUpArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery.DropOffArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery.DropOffAdd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TruckDriver.Employee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TruckDriver.Employee.EmployeeSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TruckID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fleet.TruckNumberPlate)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobStatus)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PortDelay)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery.PickUpArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery.DropOffArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery.DropOffAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckDriver.DriverID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckDriver.Employee.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckDriver.Employee.EmployeeSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fleet.TruckNumberPlate)
+            </td>
+            <td>
+                <div class="OrangeButton"> 
+                    @Html.ActionLink("Manage Booking", "UpdateDeliveryJobStatus", new { id = item.JobID }, new { @class="OrangeButtonLink" })
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+    </div>
+}

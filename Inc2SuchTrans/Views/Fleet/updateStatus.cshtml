@@ -1,0 +1,44 @@
+﻿@model Inc2SuchTrans.Models.Fleet
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+@{ Html.RenderPartial("_Alerts"); }
+
+        <h1 class="EveryHeader">Fleet</h1>
+        <div class="FilterDivAdmin">
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        
+        @Html.HiddenFor(model => model.TruckId)
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.TruckNumberPlate, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.EditorFor(model => model.TruckNumberPlate, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Availability, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.EditorFor(model => model.Availability)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.PriorityStatus, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.EditorFor(model => model.PriorityStatus)</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Save" class="OrangeButton" /></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    </div>

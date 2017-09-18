@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+                <h1 class="EveryHeader">Search For A Delivery</h1>
+<div class="FilterDivAdmin">
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm("DeliveryDetails", "Driver", FormMethod.Post))
+    {
+        
+                <div class="search">
+                    @*<input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key"/>*@
+                    <input type="text" class="form-control input-sm" id="refkey" name="refkey" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                </div>
+           
+
+        @*<div class="container">
+                <div class="row">
+                    <h4>Search For A Delivery</h4>
+                    <div class="search">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+                </div>
+            </div>*@
+    }
+</div>

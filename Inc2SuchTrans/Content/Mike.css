@@ -1,0 +1,319 @@
+﻿.FilterDiv {
+    width: 600px;
+    margin-left: 20%;
+    /*margin-top: 10%;*/
+    background-color: rgba(0, 0, 139, 0.3);
+    padding-bottom: 30px;
+    border-radius: 15px;
+    color: black;
+    display: inline-block;
+    text-align:center;
+    padding:20px;
+    height:100%;
+}
+.FilterDivAdmin {
+    width: auto;
+    min-width:50%;
+    /*margin-top: 10%;*/
+    background-color: rgba(70, 130, 180, 0.3);
+    padding-bottom: 30px;
+    border-radius: 15px;
+    color: white;
+    display: inline-block;
+    text-align:center;
+    padding:20px;
+    height:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.FilterDivv2 {
+    width: 100%;
+    /*margin-top: 10%;*/
+    background-color: rgba(0, 0, 139, 0.3);
+    padding: 3px;
+    border-radius: 15px;
+    color: black;
+    display: inline-block;
+    text-align:center;
+}
+
+a
+{
+    color:black;
+}
+
+.QuoteTable {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+.QuoteTableTD {
+    border-collapse: separate;
+    background-size: cover;
+    border-radius: 25px;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    color:black;
+}
+
+html {
+    font-family: 'Yu Gothic UI';
+}
+
+.carouselEdit {
+    color: white;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.7);
+    font-size: larger;
+}
+
+.blocklink {
+    display: block;
+    padding: 10px;
+    background-image: url('Images/Paperwork.jpg');
+    background-size: cover;
+    border-radius: 35px;
+    width: 25%;
+    height: 25%;
+    float: right;
+    margin-right: 5em;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Charcoal, sans-serif;
+    box-shadow: 0 1px 10px white, 0 1px 4px black;
+}
+
+body {
+    background-color:black;
+    background-size:inherit;
+    color: white;
+}
+
+.Admin {
+    background-image: url('Images/dark-triangles.png');
+    background-size: inherit;
+    padding: 20px;
+    color: white;
+}
+
+.BGWorking {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    padding-top: 40px;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: scroll;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ContentDiv {
+    /*margin-left: 20%;*/
+    /*margin-right: 20%;*/
+    background-color: rgba(0, 0, 139, 0.3);
+    border-radius: 15px;
+    color: black;
+    padding: 8px;
+    margin-bottom: 20px;
+    width:60%;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+#HomeHeader {
+    padding-left: 15%;
+    font-weight: 700;
+    color: black;
+    text-shadow:1px 1px darkorange;
+
+}
+
+#HomeQuote {
+    background-image: url('Images/Paperwork.jpg');
+    background-size: cover;
+    border-radius: 35px;
+    width: 25%;
+    height: 25%;
+    float: right;
+    margin-right: 5em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-family: Impact, Charcoal, sans-serif;
+    box-shadow: 0 1px 10px white, 0 1px 4px black;
+}
+
+.bgFilter {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    padding-top: 40px;
+    overflow: scroll;
+    min-height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+}
+
+#HomeTable {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    border-radius: 25px;
+    border-spacing: 20px;
+    border-collapse: separate;
+    background-color:rgba(0, 0, 139, 0.3);
+}
+
+.homeTD {
+    border-collapse: separate;
+    background-size: cover;
+    border-radius: 25px;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#RegForFree {
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 1px 10px black;
+    font-size: xx-large;
+    display: compact;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.6);
+    height:auto;
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+    #RegForFree:hover {
+        background-color:rgba(255, 140, 0, 0.6);
+        border-radius:50px;
+        border-top-left-radius:0;
+    }
+
+#AboutContent > dt {
+    font-size: x-large;
+    font-weight: bold;
+    /*color: darkgrey;*/
+}
+
+#AboutContent > dd {
+    font-style:underline;
+    font-size: large;
+    font-weight: normal;
+}
+
+.Block {
+    width: 85%;
+    height:auto;
+    background-image: url('Images/skyscraper.png');
+    margin-left: auto;
+    margin-right: auto;
+    border-style: outset;
+    border-width: 3px;
+    border-color: darkorange;
+    color: black;
+    padding:25px;
+    min-height:900px;
+    overflow-x:scroll;
+}
+.OrangeButtonLink
+{
+    color:aliceblue;
+    font-size:large;
+    text-align:center;
+    width:100px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    background-color:orange;
+}
+
+.OrangeButton
+{
+    padding:2px;
+    height:auto;
+    width:120px;
+    background-color:orange;
+    overflow:hidden;
+    color:aliceblue;
+    border-radius:6px;
+    margin-bottom:10px;
+    margin-left:10px;
+}
+.BookingTable
+{
+    width:100%;
+}
+.BookingTable td
+{
+    width:50%;
+    padding:5px;
+    text-align:left;
+}
+.DeliveryTable
+{
+    width:90%;
+    margin:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    margin-top:10px;
+    /*border:5px groove black;*/
+    /*border-spacing:0 10px;*/
+    border-radius:15px;
+    border:1px solid black;
+    color:black;
+    padding:3px;
+}
+.DeliveryTable td 
+{
+    width:auto;
+    padding-bottom:5px;
+    text-align:left;
+    padding:5px;
+}
+.DeliveryTable th
+{
+    width:auto;
+    padding-bottom:5px;
+    text-align:left;
+    border:1px solid black;
+}
+.DeliveryTable tr
+{
+    border-bottom:1px solid black;
+    background-color:rgba(255, 255, 255, 0.4);
+    padding:3px;
+}
+.Column1
+    {
+        width:auto;
+    }
+.EveryHeader
+{
+    text-decoration:underline;
+    text-align:center;
+}
+
+.Round{
+    border-radius:5px;
+}

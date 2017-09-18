@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STLogisticsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArchivedDeliveries">
+          <Key>
+            <PropertyRef Name="ArchDelID" />
+          </Key>
+          <Property Name="ArchDelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryID" Type="int" />
+          <Property Name="CurrentDate" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="PickUpArea" Type="varchar" MaxLength="256" />
+          <Property Name="DropOffArea" Type="varchar" MaxLength="256" />
+          <Property Name="DropOffAddress" Type="varchar" MaxLength="256" />
+          <Property Name="CargoSize" Type="int" />
+          <Property Name="CargoWeight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Paid" Type="bit" />
+          <Property Name="DeliveryRef" Type="varchar" MaxLength="256" />
+          <Property Name="DeliveryStatus" Type="varchar" MaxLength="256" />
+          <Property Name="ReasonForArchive" Type="varchar" MaxLength="256" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="AreaRates">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="256" />
+          <Property Name="Rate(6m)" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate(12m)" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Breakdowns">
+          <Key>
+            <PropertyRef Name="BreakDownID" />
+          </Key>
+          <Property Name="BreakDownID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TruckNumberPlate" Type="varchar" MaxLength="256" />
+          <Property Name="BreakdownDescription" Type="varchar" MaxLength="255" />
+          <Property Name="BreakdownLocation" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="CargoID" />
+          </Key>
+          <Property Name="CargoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PickUpArea" Type="varchar" MaxLength="256" />
+          <Property Name="6m" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="12m" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="256" />
+          <Property Name="Tel" Type="varchar" MaxLength="256" />
+          <Property Name="Fax" Type="varchar" MaxLength="256" />
+          <Property Name="Cell" Type="varchar" MaxLength="256" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="CustomerSurname" Type="varchar" MaxLength="255" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DelID" />
+          </Key>
+          <Property Name="DelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CurrentDate" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="PickUpArea" Type="varchar" MaxLength="256" />
+          <Property Name="DropOffArea" Type="varchar" MaxLength="256" />
+          <Property Name="DropOffAdd" Type="varchar" MaxLength="256" />
+          <Property Name="CargoSize" Type="int" />
+          <Property Name="CargoWeight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Paid" Type="bit" />
+          <Property Name="DeliveryRef" Type="varchar" MaxLength="256" />
+          <Property Name="DeliveryStatus" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Deliveryjob">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DelID" Type="int" />
+          <Property Name="TruckID" Type="int" />
+          <Property Name="DriverID" Type="int" />
+          <Property Name="JobStatus" Type="varchar" MaxLength="256" />
+          <Property Name="PortDelay" Type="bit" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="255" />
+          <Property Name="EmployeeSurname" Type="varchar" MaxLength="255" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="255" />
+          <Property Name="Position" Type="varchar" MaxLength="255" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="errorId" />
+          </Key>
+          <Property Name="errorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorName" Type="varchar(max)" />
+          <Property Name="ErrorDetails" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Fleet">
+          <Key>
+            <PropertyRef Name="TruckId" />
+          </Key>
+          <Property Name="TruckId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TruckNumberPlate" Type="varchar" MaxLength="256" />
+          <Property Name="Availability" Type="bit" />
+          <Property Name="PriorityStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="JobQueue">
+          <Key>
+            <PropertyRef Name="queueId" />
+          </Key>
+          <Property Name="queueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobID" Type="int" />
+          <Property Name="PriorityScore" Type="int" />
+          <Property Name="QueueStatus" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PickUpArea" Type="varchar" MaxLength="256" />
+          <Property Name="DropOffArea" Type="varchar" MaxLength="256" />
+          <Property Name="CargoSize" Type="int" />
+          <Property Name="CargoWeight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReferenceKey" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TruckDriver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="Avail" Type="bit" />
+          <Property Name="PriorityStatus" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Customer__UserID__276EDEB3">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Delivery__Custom__2A4B4B5E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Delivery__Custom__2B3F6F97">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__DelID__36B12243">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DelID" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="DelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__Drive__37A5467C">
+          <End Role="TruckDriver" Type="Self.TruckDriver" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckDriver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__Truck__38996AB5">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="TruckId" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__UserID__2E1BDC42">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__JobQueue__JobID__3B75D760">
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="0..1" />
+          <End Role="JobQueue" Type="Self.JobQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliveryjob">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobQueue">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckDriv__EmpID__33D4B598">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TruckDriver" Type="Self.TruckDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TruckDriver">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STLogisticsModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArchivedDeliveries" EntityType="Self.ArchivedDeliveries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AreaRates" EntityType="Self.AreaRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Breakdowns" EntityType="Self.Breakdowns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deliveryjob" EntityType="Self.Deliveryjob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fleet" EntityType="Self.Fleet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobQueue" EntityType="Self.JobQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quote" EntityType="Self.Quote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TruckDriver" EntityType="Self.TruckDriver" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Customer__UserID__276EDEB3" Association="Self.FK__Customer__UserID__276EDEB3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__Custom__2A4B4B5E" Association="Self.FK__Delivery__Custom__2A4B4B5E">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__Custom__2B3F6F97" Association="Self.FK__Delivery__Custom__2B3F6F97">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__DelID__36B12243" Association="Self.FK__Deliveryj__DelID__36B12243">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__Drive__37A5467C" Association="Self.FK__Deliveryj__Drive__37A5467C">
+            <End Role="TruckDriver" EntitySet="TruckDriver" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__Truck__38996AB5" Association="Self.FK__Deliveryj__Truck__38996AB5">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__UserID__2E1BDC42" Association="Self.FK__Employee__UserID__2E1BDC42">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__JobQueue__JobID__3B75D760" Association="Self.FK__JobQueue__JobID__3B75D760">
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+            <End Role="JobQueue" EntitySet="JobQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckDriv__EmpID__33D4B598" Association="Self.FK__TruckDriv__EmpID__33D4B598">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TruckDriver" EntitySet="TruckDriver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STLogisticsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaRates">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Rate_6m_" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate_12m_" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Customer__UserID__276EDEB3" FromRole="AspNetUsers" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__UserID__2E1BDC42" FromRole="AspNetUsers" ToRole="Employee" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="CargoID" />
+          </Key>
+          <Property Name="CargoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PickUpArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="C6m" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="C12m" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerSurname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Customer__UserID__276EDEB3" FromRole="Customer" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__Custom__2A4B4B5E" FromRole="Customer" ToRole="Delivery" />
+          <NavigationProperty Name="Delivery1" Relationship="Self.FK__Delivery__Custom__2B3F6F97" FromRole="Customer" ToRole="Delivery" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DelID" />
+          </Key>
+          <Property Name="DelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CurrentDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="PickUpArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DropOffArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DropOffAdd" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CargoSize" Type="Int32" />
+          <Property Name="CargoWeight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Paid" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Delivery__Custom__2A4B4B5E" FromRole="Delivery" ToRole="Customer" />
+          <NavigationProperty Name="Customer1" Relationship="Self.FK__Delivery__Custom__2B3F6F97" FromRole="Delivery" ToRole="Customer" />
+          <NavigationProperty Name="Deliveryjob" Relationship="Self.FK__Deliveryj__DelID__36B12243" FromRole="Delivery" ToRole="Deliveryjob" />
+          <Property Name="DeliveryRef" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryStatus" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Deliveryjob">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DelID" Type="Int32" />
+          <Property Name="TruckID" Type="Int32" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="JobStatus" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PortDelay" Type="Boolean" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK__Deliveryj__DelID__36B12243" FromRole="Deliveryjob" ToRole="Delivery" />
+          <NavigationProperty Name="TruckDriver" Relationship="Self.FK__Deliveryj__Drive__37A5467C" FromRole="Deliveryjob" ToRole="TruckDriver" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK__Deliveryj__Truck__38996AB5" FromRole="Deliveryjob" ToRole="Fleet" />
+          <NavigationProperty Name="JobQueue" Relationship="Self.FK__JobQueue__JobID__3B75D760" FromRole="Deliveryjob" ToRole="JobQueue" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSurname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Employee__UserID__2E1BDC42" FromRole="Employee" ToRole="AspNetUsers" />
+          <NavigationProperty Name="TruckDriver" Relationship="Self.FK__TruckDriv__EmpID__33D4B598" FromRole="Employee" ToRole="TruckDriver" />
+        </EntityType>
+        <EntityType Name="Fleet">
+          <Key>
+            <PropertyRef Name="TruckId" />
+          </Key>
+          <Property Name="TruckId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TruckNumberPlate" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Availability" Type="Boolean" />
+          <Property Name="PriorityStatus" Type="Boolean" />
+          <NavigationProperty Name="Deliveryjob" Relationship="Self.FK__Deliveryj__Truck__38996AB5" FromRole="Fleet" ToRole="Deliveryjob" />
+        </EntityType>
+        <EntityType Name="JobQueue">
+          <Key>
+            <PropertyRef Name="queueId" />
+          </Key>
+          <Property Name="queueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobID" Type="Int32" />
+          <Property Name="PriorityScore" Type="Int32" />
+          <Property Name="QueueStatus" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Deliveryjob" Relationship="Self.FK__JobQueue__JobID__3B75D760" FromRole="JobQueue" ToRole="Deliveryjob" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="QuoteID" />
+          </Key>
+          <Property Name="QuoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PickUpArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DropOffArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CargoSize" Type="Int32" />
+          <Property Name="CargoWeight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReferenceKey" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TruckDriver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="Avail" Type="Boolean" />
+          <Property Name="PriorityStatus" Type="Boolean" />
+          <NavigationProperty Name="Deliveryjob" Relationship="Self.FK__Deliveryj__Drive__37A5467C" FromRole="TruckDriver" ToRole="Deliveryjob" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__TruckDriv__EmpID__33D4B598" FromRole="TruckDriver" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__UserID__276EDEB3">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__UserID__2E1BDC42">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Delivery__Custom__2A4B4B5E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Delivery__Custom__2B3F6F97">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__DelID__36B12243">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DelID" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="DelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__Drive__37A5467C">
+          <End Role="TruckDriver" Type="Self.TruckDriver" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckDriver">
+              <PropertyRef Name="DriverID" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliveryj__Truck__38996AB5">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="TruckId" />
+            </Principal>
+            <Dependent Role="Deliveryjob">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__JobQueue__JobID__3B75D760">
+          <End Role="Deliveryjob" Type="Self.Deliveryjob" Multiplicity="0..1" />
+          <End Role="JobQueue" Type="Self.JobQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliveryjob">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobQueue">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckDriv__EmpID__33D4B598">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TruckDriver" Type="Self.TruckDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TruckDriver">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="STLogisticsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AreaRates" EntityType="Self.AreaRates" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" />
+          <EntitySet Name="Deliveryjob" EntityType="Self.Deliveryjob" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Fleet" EntityType="Self.Fleet" />
+          <EntitySet Name="JobQueue" EntityType="Self.JobQueue" />
+          <EntitySet Name="Quote" EntityType="Self.Quote" />
+          <EntitySet Name="TruckDriver" EntityType="Self.TruckDriver" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__UserID__276EDEB3" Association="Self.FK__Customer__UserID__276EDEB3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__UserID__2E1BDC42" Association="Self.FK__Employee__UserID__2E1BDC42">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__Custom__2A4B4B5E" Association="Self.FK__Delivery__Custom__2A4B4B5E">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__Custom__2B3F6F97" Association="Self.FK__Delivery__Custom__2B3F6F97">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__DelID__36B12243" Association="Self.FK__Deliveryj__DelID__36B12243">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__Drive__37A5467C" Association="Self.FK__Deliveryj__Drive__37A5467C">
+            <End Role="TruckDriver" EntitySet="TruckDriver" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliveryj__Truck__38996AB5" Association="Self.FK__Deliveryj__Truck__38996AB5">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+          </AssociationSet>
+          <AssociationSet Name="FK__JobQueue__JobID__3B75D760" Association="Self.FK__JobQueue__JobID__3B75D760">
+            <End Role="Deliveryjob" EntitySet="Deliveryjob" />
+            <End Role="JobQueue" EntitySet="JobQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckDriv__EmpID__33D4B598" Association="Self.FK__TruckDriv__EmpID__33D4B598">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TruckDriver" EntitySet="TruckDriver" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Error" EntityType="STLogisticsModel.Error" />
+          <EntitySet Name="Breakdowns" EntityType="STLogisticsModel.Breakdowns" />
+          <EntitySet Name="ArchivedDeliveries" EntityType="STLogisticsModel.ArchivedDeliveries" />
+          <EntitySet Name="Contact" EntityType="STLogisticsModel.Contact" />
+        </EntityContainer>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="errorId" />
+          </Key>
+          <Property Name="errorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Breakdowns">
+          <Key>
+            <PropertyRef Name="BreakDownID" />
+          </Key>
+          <Property Name="BreakDownID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TruckNumberPlate" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="BreakdownDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BreakdownLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ArchivedDeliveries">
+          <Key>
+            <PropertyRef Name="ArchDelID" />
+          </Key>
+          <Property Name="ArchDelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryID" Type="Int32" />
+          <Property Name="CurrentDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="PickUpArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DropOffArea" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DropOffAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CargoSize" Type="Int32" />
+          <Property Name="CargoWeight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Paid" Type="Boolean" />
+          <Property Name="DeliveryRef" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryStatus" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonForArchive" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Cell" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STLogisticsModelStoreContainer" CdmEntityContainer="STLogisticsEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="STLogisticsModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaRates">
+            <EntityTypeMapping TypeName="STLogisticsModel.AreaRates">
+              <MappingFragment StoreEntitySet="AreaRates">
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Rate_6m_" ColumnName="Rate(6m)" />
+                <ScalarProperty Name="Rate_12m_" ColumnName="Rate(12m)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="STLogisticsModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="STLogisticsModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="STLogisticsModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="STLogisticsModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargo">
+            <EntityTypeMapping TypeName="STLogisticsModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargo">
+                <ScalarProperty Name="CargoID" ColumnName="CargoID" />
+                <ScalarProperty Name="PickUpArea" ColumnName="PickUpArea" />
+                <ScalarProperty Name="C6m" ColumnName="6m" />
+                <ScalarProperty Name="C12m" ColumnName="12m" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="STLogisticsModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerSurname" ColumnName="CustomerSurname" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery">
+            <EntityTypeMapping TypeName="STLogisticsModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="DeliveryRef" ColumnName="DeliveryRef" />
+                <ScalarProperty Name="DelID" ColumnName="DelID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="PickUpArea" ColumnName="PickUpArea" />
+                <ScalarProperty Name="DropOffArea" ColumnName="DropOffArea" />
+                <ScalarProperty Name="DropOffAdd" ColumnName="DropOffAdd" />
+                <ScalarProperty Name="CargoSize" ColumnName="CargoSize" />
+                <ScalarProperty Name="CargoWeight" ColumnName="CargoWeight" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveryjob">
+            <EntityTypeMapping TypeName="STLogisticsModel.Deliveryjob">
+              <MappingFragment StoreEntitySet="Deliveryjob">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="DelID" ColumnName="DelID" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+                <ScalarProperty Name="PortDelay" ColumnName="PortDelay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="STLogisticsModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeSurname" ColumnName="EmployeeSurname" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fleet">
+            <EntityTypeMapping TypeName="STLogisticsModel.Fleet">
+              <MappingFragment StoreEntitySet="Fleet">
+                <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+                <ScalarProperty Name="TruckNumberPlate" ColumnName="TruckNumberPlate" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="PriorityStatus" ColumnName="PriorityStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobQueue">
+            <EntityTypeMapping TypeName="STLogisticsModel.JobQueue">
+              <MappingFragment StoreEntitySet="JobQueue">
+                <ScalarProperty Name="queueId" ColumnName="queueId" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="PriorityScore" ColumnName="PriorityScore" />
+                <ScalarProperty Name="QueueStatus" ColumnName="QueueStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quote">
+            <EntityTypeMapping TypeName="STLogisticsModel.Quote">
+              <MappingFragment StoreEntitySet="Quote">
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="PickUpArea" ColumnName="PickUpArea" />
+                <ScalarProperty Name="DropOffArea" ColumnName="DropOffArea" />
+                <ScalarProperty Name="CargoSize" ColumnName="CargoSize" />
+                <ScalarProperty Name="CargoWeight" ColumnName="CargoWeight" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="ReferenceKey" ColumnName="ReferenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TruckDriver">
+            <EntityTypeMapping TypeName="STLogisticsModel.TruckDriver">
+              <MappingFragment StoreEntitySet="TruckDriver">
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Avail" ColumnName="Avail" />
+                <ScalarProperty Name="PriorityStatus" ColumnName="PriorityStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="STLogisticsModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Error">
+            <EntityTypeMapping TypeName="STLogisticsModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="ErrorDetails" ColumnName="ErrorDetails" />
+                <ScalarProperty Name="ErrorName" ColumnName="ErrorName" />
+                <ScalarProperty Name="errorId" ColumnName="errorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Breakdowns">
+            <EntityTypeMapping TypeName="STLogisticsModel.Breakdowns">
+              <MappingFragment StoreEntitySet="Breakdowns">
+                <ScalarProperty Name="BreakdownLocation" ColumnName="BreakdownLocation" />
+                <ScalarProperty Name="BreakdownDescription" ColumnName="BreakdownDescription" />
+                <ScalarProperty Name="TruckNumberPlate" ColumnName="TruckNumberPlate" />
+                <ScalarProperty Name="BreakDownID" ColumnName="BreakDownID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArchivedDeliveries">
+            <EntityTypeMapping TypeName="STLogisticsModel.ArchivedDeliveries">
+              <MappingFragment StoreEntitySet="ArchivedDeliveries">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReasonForArchive" ColumnName="ReasonForArchive" />
+                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="DeliveryRef" ColumnName="DeliveryRef" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="CargoWeight" ColumnName="CargoWeight" />
+                <ScalarProperty Name="CargoSize" ColumnName="CargoSize" />
+                <ScalarProperty Name="DropOffAddress" ColumnName="DropOffAddress" />
+                <ScalarProperty Name="DropOffArea" ColumnName="DropOffArea" />
+                <ScalarProperty Name="PickUpArea" ColumnName="PickUpArea" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
+                <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
+                <ScalarProperty Name="ArchDelID" ColumnName="ArchDelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="STLogisticsModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

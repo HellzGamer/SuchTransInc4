@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Delivery>
+
+@{
+
+}
+<br /><br />
+
+@{ Html.RenderPartial("_Alerts"); }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-offtop table-bordered table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryRef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropOffArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropOffAdd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropOffArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DropOffAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargoSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargoWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DelID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DelID })
+            </td>
+        </tr>
+    }
+
+</table>

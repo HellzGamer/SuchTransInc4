@@ -1,0 +1,131 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+
+@{
+
+}
+@section scripts
+{
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA13dZ85nJ866fueX4lhX_s83xVrejErY&libraries=places"></script>
+}
+<style>
+    .MyDiv {
+        width: 15%;
+        float: left;
+    }
+</style>
+
+@{ Html.RenderPartial("_Alerts"); }
+@using (Html.BeginForm())
+{
+
+    <h2 style="text-decoration: underline; text-align:center;">Book A Delivery With Us</h2>
+        <div class="FilterDiv">
+            <hr />
+
+            <table class="BookingTable">
+                <tr>
+                    <td>@Html.LabelFor(model => model.DeliveryDate)</td>
+                    <td>@Html.TextBoxFor(model => model.DeliveryDate, new { type = "date" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.PickUpArea)</td>
+                    <td>@Html.DropDownList("PickUpArea", "Select a Pick Up Area")</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DropOffArea)</td>
+                    <td>@Html.DropDownList("DropOffArea", "Select a Drop Off Area")</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.DropOffAdd)</td>
+                    <td>@Html.EditorFor(model => model.DropOffAdd)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CargoSize)</td>
+                    <td>
+                        @Html.DropDownListFor(model => model.CargoSize, new SelectList(new List<Object> {
+                                                                                new {value=6, text="6m"},
+                                                                                new {value=12, text="12m"}
+                                                                                },
+                                                      "value", "text"))
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.CargoWeight)</td>
+                <td>@Html.EditorFor(model => model.CargoWeight, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+            $(document).ready(function () {
+                $("#collapseOne").addClass("panel-collapse collapse in");
+
+                $('#DeliveryDate').datetimepicker();
+            });
+</script>
+
+@*<div class="form-group">
+
+                    @Html.LabelFor(model => model.DeliveryDate, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+
+                    @Html.TextBoxFor(model=>model.DeliveryDate, new { type = "date" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PickUpArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PickUpArea", "Select a Pick Up Area")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DropOffArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("DropOffArea", "Select a Drop Off Area")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DropOffAdd, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DropOffAdd, new { htmlAttributes = new { @class = "form-control", @id = "txtPlaces" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CargoSize, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CargoSize, new SelectList(new List<Object> {
+                                                                                    new {value=6, text="6m"},
+                                                                                    new {value=12, text="12m"}
+                                                                                    },
+                                                          "value", "text"))
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CargoWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CargoWeight, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+    *@
+    

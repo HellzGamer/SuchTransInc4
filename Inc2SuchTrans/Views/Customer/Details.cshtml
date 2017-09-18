@@ -1,0 +1,109 @@
+﻿@model Inc2SuchTrans.Models.Customer
+@{
+
+}
+
+        <h4 style="font-size:300%; text-decoration:underline;text-align:center;">Your Profile</h4>
+<div class="FilterDiv">
+    <div>
+        @{ Html.RenderPartial("_Alerts"); }
+        <hr />
+
+        <table class="table-condensed table-bordered DeliveryTable">
+            <tbody>
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CustomerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CustomerName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CustomerSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CustomerSurname)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.IDNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.IDNumber)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.City)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.CustomerAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CustomerAddress)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PostalCode)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ContactNumber)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.DateCreated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DateCreated)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="alert-info">
+                        @Html.DisplayNameFor(model => model.LastModified)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.LastModified)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Update Your Details", "Edit", new { id = Model.CustomerID })
+    </p>
+</div>

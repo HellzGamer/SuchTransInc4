@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.JobQueue>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+            <h1 class="EveryHeader">Job Queue</h1>
+    <div class="container FilterDivAdmin">
+    @using (Html.BeginForm("JobQueue", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="queueId" name="queueId" maxlength="64" placeholder="Enter Queue ID" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+    }
+
+    <br />
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <table class="table-bordered table-condensed DeliveryTable">
+        <tr style="background-color:black; color:white;">
+            <th>
+                @Html.DisplayNameFor(model => model.queueId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deliveryjob.JobID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriorityScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deliveryjob.JobStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deliveryjob.Delivery.PickUpArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deliveryjob.Delivery.DropOffArea)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.queueId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deliveryjob.JobID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deliveryjob.JobStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deliveryjob.Delivery.PickUpArea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deliveryjob.Delivery.DropOffAdd)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <h4 class="alert-danger Round">
+        All Jobs/Deliveries that have been completed are marked as "Delivered" in the Jobs table and have been removed from the queue
+    </h4>
+    <div>
+        <p>
+            @Html.ActionLink("Back to Delivery Jobs", "DeliveryJobs", "Admin")
+        </p>
+    </div>
+</div>
+

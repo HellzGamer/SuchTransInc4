@@ -1,0 +1,138 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+
+@{
+
+}
+
+@{ Html.RenderPartial("_Alerts"); }
+    <h3 class="EveryHeader">Are you sure you want to cancel this delivery?</h3>
+   
+<div class="FilterDiv">
+    <hr />
+    <table class="BookingTable">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CurrentDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DeliveryDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.PickUpArea)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PickUpArea)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DropOffArea)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DropOffArea)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DropOffAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DropOffAdd)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CargoSize)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CargoSize)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CargoWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CargoWeight)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TotalCost)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Paid)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Paid)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DeliveryRef)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DeliveryRef)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DeliveryStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DeliveryStatus)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Customer.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Customer.UserID)
+            </td>
+        </tr>
+       <tr>
+<td>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Cancel Delivery" class="OrangeButton" />
+    }
+    </td>
+           <td></td>
+
+       </tr>
+    </table>
+
+    
+        @Html.ActionLink("Back to List", "YourDeliveries", "Delivery")
+</div>
+
+        
+

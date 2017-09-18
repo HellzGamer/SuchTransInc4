@@ -1,0 +1,203 @@
+﻿@model Inc2SuchTrans.Models.Delivery
+@{
+
+}
+
+<br />
+<body style="color:white" >
+    <div>
+        <div>
+            <h3><strong>SUCH TRANS cc <br /> LOGISTICS SERVICES</strong></h3>
+            <h5>www.suchtransinc2.somee.com</h5>
+        </div>
+        <hr />
+        <h4>Your Delivery Details</h4>
+        <hr />
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.CurrentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CurrentDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DeliveryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.PickUpArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PickUpArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DropOffArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffArea)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DropOffAdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DropOffAdd)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.CargoSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoSize)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.CargoWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CargoWeight)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.TotalCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TotalCost)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DeliveryRef)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryRef)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <hr />
+    <h4>Customer Details</h4>
+    <hr />
+
+    <div>
+        <table>
+            <tbody>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.CustomerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.CustomerName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.CustomerSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.CustomerSurname)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.IDNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.IDNumber)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.City)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.CustomerAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.CustomerAddress)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.PostalCode)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.ContactNumber)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.Email)
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br /><br />
+        <hr />
+        <hr />
+        <div>
+            SUCH TRANS cc <br />
+            LOGISTIC SERVICES <br />
+            774 Silverglen Drive <br />
+            Silverglen, Chatsworth <br />
+            P.O Box 16108 <br />
+            Bluff 4036 <br />
+            Tel: 031 301 8230 <br />
+            Fax:  031 301 3658 <br />
+            Cell:  071 625 7236 <br />
+            palan@supaquicklogistics.co.za <br />
+        </div>
+    </div>
+    <br />
+
+</body>

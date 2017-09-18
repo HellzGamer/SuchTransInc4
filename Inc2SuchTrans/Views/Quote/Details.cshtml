@@ -1,0 +1,86 @@
+﻿@model Inc2SuchTrans.Models.Quote
+@{
+
+}
+
+
+
+@{ Html.RenderPartial("_Alerts"); }
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="FilterDiv" style="color:black">
+            <h4 style="color:white">Your Quotation Details Including Total Cost</h4>
+            <hr />
+            <table class="QuoteTable">
+                <thead style="color:white;"></thead>
+                <tbody>
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b>@Html.DisplayNameFor(model => model.PickUpArea):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.PickUpArea)
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b>@Html.DisplayNameFor(model => model.DropOffArea):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.DropOffArea)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b>@Html.DisplayNameFor(model => model.CargoSize):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.CargoSize)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b> @Html.DisplayNameFor(model => model.CargoWeight):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.CargoWeight)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b> @Html.DisplayNameFor(model => model.TotalCost):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.TotalCost)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="alert-success QuoteTableTD">
+                            <b> @Html.DisplayNameFor(model => model.ReferenceKey):</b>
+                        </td>
+                        <td class="QuoteTableTD alert-info">
+                            @Html.DisplayFor(model => model.ReferenceKey)
+                        </td>
+                    </tr>
+
+                    <tr class="alert-success">
+                        <td>
+                            @Html.ActionLink("Change Details", "Edit", new { id = Model.QuoteID })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Email Quote", "EmailQuote", new { id = Model.QuoteID })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+
+    </div>
+}
+

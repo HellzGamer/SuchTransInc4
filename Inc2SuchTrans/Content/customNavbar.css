@@ -1,0 +1,84 @@
+﻿.mix {
+    min-height: 370px;
+}
+
+div.navbar-custom {
+    background-color: darkorange;
+    border-color: #488cf6;
+    box-shadow: 0 0 12px 0 #ccc;
+    z-index: 999;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    position: fixed;
+}
+
+div.navbar-custom a {
+    color: #dfe0ed;
+}
+
+div.navbar-custom ul.navbar-nav a {
+    color: #dfe0ed;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #fff;
+}
+
+    div.navbar-custom ul.navbar-nav a:hover,
+    div.navbar-custom ul.navbar-nav a:visited,
+    div.navbar-custom ul.navbar-nav a:focus,
+    div.navbar-custom ul.navbar-nav a:active {
+        background: #5CB85C;
+    }
+
+    div.navbar-custom ul.navbar-nav a:hover {
+        border-color: #5CB85C;
+    }
+
+div.navbar-custom li.divider {
+    background: #5CB85C;
+}
+
+div.navbar-custom button.navbar-toggle {
+    background: #5CB85C;
+    border-radius: 2px;
+}
+
+    div.navbar-custom button.navbar-toggle:hover {
+        background: #999;
+    }
+
+    div.navbar-custom button.navbar-toggle > span.icon-bar {
+        background: #fff;
+    }
+
+div.navbar-custom ul.dropdown-menu {
+    border: 0;
+    background: #fff;
+    border-radius: 4px;
+    margin: 4px 0;
+    border: 2px solid #5CB85C;
+    box-shadow: 0 0 4px 0 #ccc;
+}
+
+    div.navbar-custom ul.dropdown-menu > li > a {
+        color: black;
+    }
+
+        div.navbar-custom ul.dropdown-menu > li > a:hover {
+            background: #5CB85C;
+            color: #fff;
+        }
+
+div.navbar-custom span.badge {
+    background: #5CB85C;
+    font-weight: normal;
+    font-size: 11px;
+    margin: 0 4px;
+}
+
+    div.navbar-custom span.badge.new {
+        background: rgba(255, 0, 0, 0.8);
+        color: #fff;
+    }

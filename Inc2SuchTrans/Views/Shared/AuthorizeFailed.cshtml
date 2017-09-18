@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AuthorizeFailed";
+}
+
+<br /><br /><br /><br />
+
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <div class="FilterDiv" style="color:black">
+                <h4 style="color:red">AUHTORIZE FAILED</h4>
+                @{ Html.RenderPartial("_Alerts"); }
+                <table class="QuoteTable">
+                    <tbody style="color:red">
+                        <tr>
+                            <td class="alert-warning">
+                                @ViewData["Message"]
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <br />
+
+        </div>
+                    }
+

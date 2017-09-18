@@ -1,0 +1,60 @@
+﻿@model Inc2SuchTrans.Models.TruckDriver
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+            <h1 class="EveryHeader">TruckDriver</h1>
+            <div class="FilterDivAdmin">
+                @Html.HiddenFor(model => model.DriverID)
+
+                <table class="BookingTable">
+                    <tr>
+                        <td>@Html.LabelFor(model => model.EmpID, "EmpID", htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                        <td>@Html.EditorFor(model => model.EmpID)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Avail, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                        <td>@Html.EditorFor(model => model.Avail)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.PriorityStatus, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                        <td>@Html.EditorFor(model => model.PriorityStatus)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Update Availability" class="OrangeButton" /></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.ActionLink("Back to List", "Index")</td>
+                        <td></td>
+                    </tr>
+                </table>
+
+         
+
+                
+            </div>
+        </div>
+    }
+
+    <div>
+        
+    </div>
+</body>
+</html>
+

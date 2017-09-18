@@ -1,0 +1,45 @@
+﻿@model Inc2SuchTrans.Models.Breakdowns
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+
+@{ Html.RenderPartial("_Alerts"); }
+
+<h1 class="EveryHeader">Breakdown Details</h1>
+<div class="FilterDivAdmin">
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.TruckNumberPlate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TruckNumberPlate, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>*@
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.BreakdownDescription, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.EditorFor(model => model.BreakdownDescription, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.BreakdownLocation, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                    <td>@Html.EditorFor(model => model.BreakdownLocation, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Create" class="OrangeButton" /></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("All Breakdowns", "BreakdownList")
+    </div>
+</div>

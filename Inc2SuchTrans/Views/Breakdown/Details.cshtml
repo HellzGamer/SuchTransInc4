@@ -1,0 +1,60 @@
+﻿@model Inc2SuchTrans.Models.Fleet
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    td
+    {
+        border:1px solid black;
+    }
+</style>
+
+
+            <h1 class="EveryHeader">Search For Fleet</h1>
+    <div class="container FilterDivAdmin">
+    @using (Html.BeginForm("Details", "Breakdown", FormMethod.Post))
+    {
+        @*<div class="container FilterDiv">
+                <div class="row">
+                    <h4>Search For A Delivery</h4>
+                    <div class="search">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key"/>
+                        @Html.Editor("refkey")
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+                </div>
+            </div>*@
+
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="refkey" name="TruckNumberPlate" maxlength="64" placeholder="Enter Fleet's Registration Number'" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+    }
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <div>
+        
+        <table class="DeliveryTable">
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.TruckNumberPlate)</td>
+                <td>@Html.DisplayFor(model => model.TruckNumberPlate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Availability)</td>
+                <td>@Html.DisplayFor(model => model.Availability)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.PriorityStatus)</td>
+                <td>@Html.DisplayFor(model => model.PriorityStatus)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="OrangeButton">
+        @Html.ActionLink("Enter Breakdown Details", "EnterBreakdownDetails", new { id = Model.TruckId }, new { @class = "OrangeButtonLink" })
+    </div>
+</div>

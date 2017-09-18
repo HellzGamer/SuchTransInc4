@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Fleet>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+            <h1 class="EveryHeader">Search For A Truck</h1>
+
+    <div class="container FilterDivAdmin">
+    @using (Html.BeginForm("Index", "Fleet", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="TruckNumberPlate" name="TruckNumberPlate" maxlength="64" placeholder="Enter Truck Number Plate" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+    }
+
+    <br />
+
+    @{ Html.RenderPartial("_Alerts"); }
+
+    <div class="OrangeButton">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "OrangeButtonLink" })
+    </div>
+    <table class="table-bordered table-condensed DeliveryTable">
+        <tr style="background-color:black; color:white">
+            <th>
+                @Html.DisplayNameFor(model => model.TruckId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckNumberPlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriorityStatus)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TruckId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TruckNumberPlate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Availability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityStatus)
+                </td>
+                <td>
+                    <div class="OrangeButton" style="padding:3px;">
+                        @Html.ActionLink("Change Availabiltiy", "UpdateStatus", new { id = item.TruckId }, new { @style = "color:white; display:block; margin:0 auto;" })
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

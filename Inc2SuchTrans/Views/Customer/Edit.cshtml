@@ -1,0 +1,96 @@
+﻿@model Inc2SuchTrans.Models.Customer
+@{
+
+}
+
+            <h4 style="font-size:300%; text-decoration:underline; text-align:center;">Update Your Details</h4>
+<div class="FilterDiv">
+
+    @{ Html.RenderPartial("_Alerts"); }
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <hr />
+            
+            @Html.HiddenFor(model => model.CustomerID)
+
+
+            <table class="BookingTable">
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CustomerSurname, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.CustomerSurname, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.IDNumber, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.IDNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.CustomerAddress, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-3 Column1" })
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+            </table>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" style="margin-left:auto; margin-right:auto; background-color:lightblue" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Your Profile", "Details")
+    </div>
+</div>

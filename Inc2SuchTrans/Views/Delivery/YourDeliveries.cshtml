@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Inc2SuchTrans.Models.Delivery>
+
+@{
+
+}
+
+<h2 style="text-decoration:underline; text-align:center;">Your Deliveries</h2>
+@using (Html.BeginForm("YourDeliveries", "Delivery", FormMethod.Post))
+{
+    @*<div class="container FilterDiv">
+            <div class="row">
+                <h4>Search For A Delivery</h4>
+                <div class="search">
+                    <input type="text" class="form-control input-sm" maxlength="64" placeholder="Enter Delivery Reference Key"/>
+                    @Html.Editor("refkey")
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="FilterDivv2">
+        <div class="row">
+            <div class="search">
+                <input type="text" class="form-control input-sm" id="refkey" name="refkey" maxlength="64" placeholder="Enter Delivery Reference Key" />
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+        </div>
+
+
+
+        <br />
+
+
+        @{ Html.RenderPartial("_Alerts"); }
+
+        <div class="OrangeButton">
+            @Html.ActionLink("Book New Delivery", "CreateFromSite", "Delivery", null, new { @class = "OrangeButtonLink" })
+        </div>
+        <table class="DeliveryTable">
+
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryRef)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurrentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.PickUpArea)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DropOffArea)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.DropOffAdd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CargoSize)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CargoWeight)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalCost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Paid)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryRef)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CurrentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryDate)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.PickUpArea)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DropOffArea)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DropOffAdd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CargoSize)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.CargoWeight)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paid)
+                    </td>
+                    <td>
+                        <div class="OrangeButton">
+                            @Html.ActionLink("View Delivery Status", "Details", "Delivery", new { id = item.DelID }, new { @class = "OrangeButtonLink" })
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+
+
+        </table>
+        <div class="OrangeButton">
+            @Html.ActionLink("Pay For Deliveries", "UnpaidDeliveries", "Delivery", null, new { @class = "OrangeButtonLink" })
+        </div>
+    </div>
+            }
+
+
+
+@*<tr>
+        <td style="background-color:white">
+            @Html.ActionLink("Back", "YourDeliveries", new { refkey = "" })
+        </td>
+        <td style="background-color:white">@Html.ActionLink("Pay For Deliveries", "UnpaidDeliveries")</td>
+    </tr>*@
